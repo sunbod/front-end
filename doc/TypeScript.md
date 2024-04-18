@@ -8,7 +8,7 @@ TypeScript 是 JavaScript 的语法超集，它添加了静态类型。
 TypeScript 对比 JavaScript 的好处：
 
 - Ts 使用静态类型，Js 使用动态类型，静态类型在开发过程中，编辑器就可以反馈语法是否正确
-- Ts 有更有好的提示
+- Ts 有更有好的语法提示与补全
 
 ### 动态类型 VS 静态类型
 

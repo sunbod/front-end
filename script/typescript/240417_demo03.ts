@@ -5,9 +5,9 @@
 
 // ---------------------------
 
-let count: number;
+let count03: number;
 
-count = 123;
+count03 = 123;
 
 let count_inference = 123;
 
