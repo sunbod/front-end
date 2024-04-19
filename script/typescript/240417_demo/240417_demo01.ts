@@ -5,7 +5,7 @@ interface Point2 { x: number, y: number }
 // ---------------------------
 
 
-function TsDemo(data: Point1) {
+function TsDemo01(data: Point1) {
     console.log("asd")
     return Math.sqrt(data.x ** 2 + data.y ** 2);
 }

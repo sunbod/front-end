@@ -14,7 +14,19 @@ const func = (str: string): number => {
 const func1: (str: string) => number = (str) => {
   return parseInt(str, 10);
 }
-//这里的date，Ts会推断他的类型，可以不写
+// 这里的date，Ts会推断他的类型，可以不写
 const date: Date = new Date()
+
+// 其他的case
+interface Person {
+  name: 'string'
+}
+
+const rawData = '{"name":"dell"}';
+const newData: Person = JSON.parse(rawData);
+
+// 特殊情况：前面想定义一个数字变量，后面想变成字符串
+let temp: number | string = 123;
+temp = "456";
 
 // --------------------------------------------------------

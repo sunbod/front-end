@@ -19,8 +19,8 @@ const secondNumber = 2;
 const totalNumber = firstNumber + secondNumber;
 // ---------------------------
 // 这里需要类型注解，入参类型不确定，TS无法推断
-function getTotal(firstNumber, secondNumber) {
+function getTotal03(firstNumber, secondNumber) {
   return firstNumber + secondNumber;
 }
 
-getTotal(1, 2);
+getTotal03(1, 2);

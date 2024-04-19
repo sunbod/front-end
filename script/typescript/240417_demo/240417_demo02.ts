@@ -1,5 +1,5 @@
 // 基础类型 null, undefined, symbol, boolean, void
-const count: number = 123;
+const count02: number = 123;
 const teacherName: string = "Dell";
 
 // --------------------------
@@ -23,7 +23,7 @@ const dell: Person = new Person();
   返回一个数字类型
   () => {}具体函数实现
 */
-const getTotal: () => number = () => {
+const getTotal02: () => number = () => {
   return 123;
 }
 // --------------------------
