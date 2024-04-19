@@ -80,11 +80,11 @@ asd
 
 ### 基础类型和对象类型
 
-[Example code](../script/typescript/240417_demo02.ts)
+[Example code](../script/typescript/240417_demo/240417_demo02.ts)
 
 ### 类型注解和类型推断
 
-[Example code](../script/typescript/240417_demo03.ts)
+[Example code](../script/typescript/240417_demo/240417_demo03.ts)
 
 ### 函数相关类型
 
@@ -94,8 +94,110 @@ const hello1 = function () {};
 const hello2 = () => {};
 ```
 
-[Example code](../script/typescript/240417_demo04.ts)
+[Example code](../script/typescript/240417_demo/240417_demo04.ts)
 
 ### 基础语法总结
 
-[Example code](../script/typescript/240417_demo05.ts)
+[Example code](../script/typescript/240417_demo/240417_demo05.ts)
+
+### 数组和元组
+
+- 元组 tuple
+  可以对数组中每一个元素的属性起到约束作用
+
+```ts
+const tupleArr01: [string, string, number] = ["dell", "male", 28];
+```
+
+[Example code](../script/typescript/240419_demo/240419_demo01.ts)
+
+### interface 接口
+
+- 特性 1：
+  如果传递字面量给 ts，他会强校验，而传递变量不会触发
+
+```ts
+interface Person {
+  name: string;
+  age?: number;
+};
+
+
+const getPersonName: (person: Person02) => void = (person) => {
+  console.log(person.name)
+
+const person = {
+  name: "dell"，
+   sex:"meal"
+};
+
+getPersonName(person);
+
+// 这里会报错，校验过不去
+getPersonName({
+  name: "dell",
+  sex:"meal"
+});
+
+```
+
+- 特性 2：
+
+  不确定类型的属性有什么
+
+```ts
+interface Person {
+  name: string;
+  age?: number;
+  //属性的名字是一个字符串类型，值是任何类型
+  [propName: string]: any;
+}
+```
+
+[Example code](../script/typescript/240419_demo/240419_demo02.ts)
+
+- 类应用接口
+
+```ts
+interface Person {
+  name: string;
+  age?: number;
+  //属性的名字是一个字符串类型，值是任何类型
+  [propName: string]: any;
+  say():string;
+}
+
+class Human im
+```
+
+- 接口可以声明一个函数
+
+```ts
+// 声明一个函数类型
+interface SayHi {
+  // 接受以和字符串类型，返回一个字符串类型
+  (word: string): string;
+}
+
+const say: SayHi = (word: string) => {
+  return word;
+};
+```
+
+Note:
+
+1. TS 代码编译成 JS 后会剔除所有 interface、class 等的定义，这些都是 TS 中帮我们做类型校验的语法，不会到 JS 代码中。
+2. interface 和 type 很类似，type 可以代表基本类型，interface 只能代表对象
+
+```ts
+type test = string;
+interface Test {
+  readonly name: string;
+  age?: number;
+  say(): string;
+}
+```
+
+### 类的定义与继承
+
+[Example code](../script/typescript/240419_demo/240419_demo03.ts)
