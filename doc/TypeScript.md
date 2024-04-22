@@ -201,3 +201,11 @@ interface Test {
 ### 类的定义与继承
 
 [Example code](../script/typescript/240419_demo/240419_demo03.ts)
+
+### 类中的访问类型和构造器
+
+[Example code](../script/typescript/240422_demo/demo01.ts)
+
+### 静态属性，Setter 和 Getter
+
+[Example code](../script/typescript/240422_demo/demo02.ts)
