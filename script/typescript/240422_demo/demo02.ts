@@ -2,6 +2,7 @@
 // ------------------------------------------------------------------
 class Person04 {
   constructor(private _name: string) { }
+  // 看着是一个方法，其实他是一个属性
   get name() {
     return this._name + " lee";
   }
@@ -26,19 +27,21 @@ console.log(person003.name);
 
 class Demo001 {
   private static _instance: Demo001;
-  // 私有化构造器，不允许随意创建实例
-  private constructor() { }
+  // 私有化构造器，不允许使用new关鍵字随意创建实例
+  private constructor(public name: string) { }
 
   // static 把这个方法直接挂到类上而不是实例上
-  static getInstance() {
+  static getInstance(name: string) {
     // 第一次调用时，this._instance是null或undefined,会创建一个，后面调用都是直接返回第一次的实例
     if (!this._instance) {
-      this._instance = new Demo001();
+      this._instance = new Demo001(name);
     }
     return this._instance;
   }
 }
 
-// 
-const demo01 = Demo001.getInstance();
-const demo02 = Demo001.getInstance();
+
+const demo01 = Demo001.getInstance('dell');
+const demo02 = Demo001.getInstance('lee');
+console.log(demo01.name);
+console.log(demo02.name);

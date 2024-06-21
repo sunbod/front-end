@@ -43,8 +43,8 @@ v20.11.1
 
 added 1 package in 2s
 # ts 文件不可以直接在浏览器和node环境运行
-(base) bo@pc:~/Documents/work/git/private/front-end/script/typescript$ node 240417_demo01.ts
-/home/bo/Documents/work/git/private/front-end/script/typescript/240417_demo01.ts:2
+(base) bo@pc:~$ node 240417_demo01.ts
+/home/bo.ts:2
 type Point1 = { x: number, y: number }
      ^^^^^^
 
@@ -61,18 +61,18 @@ SyntaxError: Unexpected identifier 'Point1'
 Node.js v20.11.1
 
 # tsc 即 TypeScript compile ，生成一个js文件
-(base) bo@pc:~/Documents/work/git/private/front-end/script/typescript$ tsc 240417_demo01.ts
+(base) bo@pc:~$ tsc 240417_demo01.ts
 ```
 
 现在的开发流程是编写 TS 文件，编译成 JS 后，再使用 node 运行，为了简化流程，安装以下插件：
 
 ```sh
 
-(base) bo@pc:~/Documents/work/git/private/front-end/script/typescript$ npm -g install ts-node
+(base) bo@pc:~$ npm -g install ts-node
 
 added 20 packages in 5s
 # 运行ts文件
-(base) bo@pc:~/Documents/work/git/private/front-end/script/typescript$ ts-node 240417_demo01.ts
+(base) bo@pc:~$ ts-node 240417_demo01.ts
 asd
 ```
 
@@ -143,7 +143,7 @@ getPersonName({
 
 - 特性 2：
 
-  不确定类型的属性有什么
+  不确定类型的属性有什么，方便后续添加，可以使用以下写法
 
 ```ts
 interface Person {
@@ -164,10 +164,15 @@ interface Person {
   age?: number;
   //属性的名字是一个字符串类型，值是任何类型
   [propName: string]: any;
-  say():string;
+  say(): string;
 }
 
-class Human im
+class Human implements Person {
+  name: "dell";
+  say(): string {
+    return "Hello";
+  }
+}
 ```
 
 - 接口可以声明一个函数
@@ -208,4 +213,58 @@ interface Test {
 
 ### 静态属性，Setter 和 Getter
 
+- 单例设计模式：
+  使类只可以生成一个实例
+
 [Example code](../script/typescript/240422_demo/demo02.ts)
+
+### 抽象类
+
+[Example code](../script/typescript/240424_demo/demo01.ts)
+
+### 爬虫
+
+#### 项目环境搭建
+
+[Example code](../script/typescript/240425_demo/demo01.ts)
+
+```sh
+# 初始化项目，生成package.json
+npm init -y
+# 生成ts配置文件
+tsc --init
+# 将之前全局安装的依赖卸载掉，重新安装到项目中，方便维护
+npm uninstall ts-node -g
+npm install -D ts-node
+```
+
+编写 test 脚本
+
+```json
+{
+  "scripts": {
+    "test": "ts-node demo01.ts"
+  }
+}
+```
+
+测试环境
+
+```sh
+npm run test
+```
+
+#### 开始开发
+
+- 安装所需工具
+
+```sh
+# 模拟ajax请求的工具
+npm install superagent --save
+```
+
+ts 直接引用 js 类库会报错，无法解析，所以提供了一个中间的翻译文件
+
+ts -> .d.ts 翻译文件 -> js
+
+我们需要安装中间的翻译文件就不报错了
